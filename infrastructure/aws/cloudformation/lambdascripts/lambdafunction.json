@@ -1,0 +1,174 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+           "Parameters": {
+	    "Bucket": {
+	      "Type": "String"
+	    },
+	    "SNSTOPICARN": {
+	      "Type": "String"
+	    },
+             "circleci":{
+         "Description":"circleci user",
+         "Type":"String"
+      },
+	    "DOMAINNAME": {
+	      "Type": "String"
+	    }
+	  },
+	"Resources":{
+		"SNSTopic": {
+		      "Type" : "AWS::SNS::Topic",
+		      "Properties" : {
+			"DisplayName" : "MySNSTopic",
+			"TopicName" : "SNSTopicResetPassword",
+			"Subscription": [
+				{
+				  "Endpoint": {
+				    "Fn::GetAtt": [ "LambdaFunction", "Arn" ]
+				  },
+				  "Protocol": "lambda"
+				}
+			      ]
+		      }
+		    },
+
+		"LambdaResourcePolicy": {
+		  "Type": "AWS::Lambda::Permission",
+		  "Properties": {
+		    "FunctionName" : { "Ref" : "LambdaFunction" },
+		    "Principal": "sns.amazonaws.com",
+		   "Action": 
+
+                "lambda:InvokeFunction"
+            ,
+		    "SourceArn" : { "Ref": "SNSTOPICARN" }
+		  }
+		},
+		"LambdaExecRole": {
+		  "Type": "AWS::IAM::Role",
+		  "Properties": {
+			"AssumeRolePolicyDocument": {
+			  "Version": "2012-10-17",
+			  "Statement": [
+				{
+				  "Effect": "Allow",
+				  "Principal": {
+					"Service": [
+					  "lambda.amazonaws.com"
+					]
+				  },
+				  "Action": [
+					"sts:AssumeRole"
+				  ]
+				}
+			  ]
+			},
+			"ManagedPolicyArns": [
+			  "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole", 
+			  "arn:aws:iam::aws:policy/AmazonSESFullAccess", 
+			  "arn:aws:iam::aws:policy/AmazonSNSFullAccess", 
+			  "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+				"arn:aws:iam::aws:policy/AWSLambdaFullAccess"
+
+			],
+			"RoleName": "LambdaExecRole"
+		  }
+		},
+             
+                        
+
+		"LambdaFunction": {
+		  "Type": "AWS::Lambda::Function",
+		  "Properties": {
+			"Handler": "notelambda.NoteLambda::handleRequest",
+			"Role": { "Fn::GetAtt" : ["LambdaExecRole", "Arn"] },
+			"Code": {
+			  "S3Bucket": { "Ref" : "Bucket" },
+			  "S3Key": "notelambda.zip"
+			},
+			"Runtime": "java8",
+			"FunctionName" : "NoteLambda",
+			"MemorySize" : 256,
+			"Timeout": 180,
+			"Environment": {"Variables" : {
+           					 "domainName" : { "Ref" : "DOMAINNAME" }
+          				} }
+			
+		  }
+		},
+
+          "LambdaFullAccess" : {
+              "Type": "AWS::IAM::ManagedPolicy",
+               "Properties": {
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+                                          "Statement": [
+			{
+			    "Effect": "Allow",
+			    "Action": [
+				"cloudformation:DescribeChangeSet",
+				"cloudformation:DescribeStackResources",
+				"cloudformation:DescribeStacks",
+				"cloudformation:GetTemplate",
+				"cloudformation:ListStackResources",
+				"cloudwatch:*",
+				"cognito-identity:ListIdentityPools",
+				"cognito-sync:GetCognitoEvents",
+				"cognito-sync:SetCognitoEvents",
+				"dynamodb:*",
+				"ec2:DescribeSecurityGroups",
+				"ec2:DescribeSubnets",
+				"ec2:DescribeVpcs",
+				"events:*",
+				"iam:GetPolicy",
+				"iam:GetPolicyVersion",
+				"iam:GetRole",
+				"iam:GetRolePolicy",
+				"iam:ListAttachedRolePolicies",
+				"iam:ListRolePolicies",
+				"iam:ListRoles",
+				"iam:PassRole",
+				"iot:AttachPrincipalPolicy",
+				"iot:AttachThingPrincipal",
+				"iot:CreateKeysAndCertificate",
+				"iot:CreatePolicy",
+				"iot:CreateThing",
+				"iot:CreateTopicRule",
+				"iot:DescribeEndpoint",
+				"iot:GetTopicRule",
+				"iot:ListPolicies",
+				"iot:ListThings",
+				"iot:ListTopicRules",
+				"iot:ReplaceTopicRule",
+				"kinesis:DescribeStream",
+				"kinesis:ListStreams",
+				"kinesis:PutRecord",
+				"kms:ListAliases",
+				"lambda:*",
+				"logs:*",
+				"s3:*",
+				"sns:ListSubscriptions",
+				"sns:ListSubscriptionsByTopic",
+				"sns:ListTopics",
+				"sns:Publish",
+				"sns:Subscribe",
+				"sns:Unsubscribe",
+				"sqs:ListQueues",
+				"sqs:SendMessage",
+				"tag:GetResources",
+				"xray:PutTelemetryRecords",
+				"xray:PutTraceSegments"
+			    ],
+			    "Resource": "*"
+			}
+		    ]
+			   },
+              "Users": [{"Ref": "circleci"}]
+
+	}
+      }
+    
+					
+    }
+}
+

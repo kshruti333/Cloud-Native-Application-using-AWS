@@ -1,0 +1,22 @@
+[
+        {
+		"ParameterKey": "vpc",
+		"ParameterValue": "191.0.0.0/16"
+	},
+	{
+		"ParameterKey": "myvpcSubnet1",
+		"ParameterValue": "191.0.0.0/24"
+	},
+	{
+		"ParameterKey": "myvpcSubnet2",
+		"ParameterValue": "191.0.1.0/24"
+	},
+	{
+		"ParameterKey": "myvpcSubnet3",
+		"ParameterValue": "191.0.2.0/24"
+	},
+        {
+                "ParameterKey": "DestinationBlock",
+                "ParameterValue": "0.0.0.0/0"
+        }
+]
