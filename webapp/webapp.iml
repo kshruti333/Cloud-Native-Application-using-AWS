@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/noteapp" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="5.1.4.RELEASE2" level="project" />
+    <orderEntry type="library" name="servlet-api-2.5" level="project" />
+    <orderEntry type="library" name="aws-java-sdk-s3-1.11.133" level="project" />
+    <orderEntry type="library" name="lib74" level="project" />
+    <orderEntry type="library" name="5.1.3.RELEASE3" level="project" />
+    <orderEntry type="library" name="2.1.2.RELEASE2" level="project" />
+    <orderEntry type="library" name="5.3.7.Final" level="project" />
+    <orderEntry type="library" name="5.1.4.RELEASE6" level="project" />
+    <orderEntry type="library" name="9.0.141" level="project" />
+    <orderEntry type="library" name="lib90" level="project" />
+    <orderEntry type="library" name="aws-java-sdk-sts-1.11.133" level="project" />
+    <orderEntry type="library" name="4.12" level="project" />
+    <orderEntry type="library" name="lib41" level="project" />
+    <orderEntry type="library" name="aws-java-sdk-core-1.11.133" level="project" />
+    <orderEntry type="library" name="plugins" level="project" />
+    <orderEntry type="library" name="5.1.4.RELEASE9" level="project" />
+    <orderEntry type="library" name="jsr250-api-1.0" level="project" />
+    <orderEntry type="library" name="2.0.1.Final" level="project" />
+    <orderEntry type="library" name="5.1.3.RELEASE2" level="project" />
+    <orderEntry type="library" name="java-statsd-client-3.0.1" level="project" />
+    <orderEntry type="library" name="1.3.2" level="project" />
+    <orderEntry type="library" name="lib95" level="project" />
+    <orderEntry type="library" name="2.2" level="project" />
+    <orderEntry type="library" name="5.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="5.1.4.RELEASE10" level="project" />
+    <orderEntry type="library" name="2.9.0" level="project" />
+    <orderEntry type="library" name="rt1" level="project" />
+    <orderEntry type="library" name="lib73" level="project" />
+    <orderEntry type="library" name="servlet-api-2.5-20081211" level="project" />
+    <orderEntry type="library" name="aws-java-sdk-sns-1.11.133" level="project" />
+    <orderEntry type="library" name="2.1.2.RELEASE1" level="project" />
+    <orderEntry type="library" name="2.9.8" level="project" />
+    <orderEntry type="library" name="lib129" level="project" />
+    <orderEntry type="library" name="1.5.0" level="project" />
+    <orderEntry type="library" name="aws-java-sdk-cloudfront-1.11.133" level="project" />
+    <orderEntry type="library" name="rt" level="project" />
+    <orderEntry type="library" name="0.0.20131108.vaadin1" level="project" />
+    <orderEntry type="library" name="lib126" level="project" />
+    <orderEntry type="library" name="5.1.3.RELEASE" level="project" />
+    <orderEntry type="library" name="jsr305-2.0.1" level="project" />
+    <orderEntry type="library" name="1.7.25" level="project" />
+    <orderEntry type="library" name="2.8.5" level="project" />
+    <orderEntry type="library" name="lib45" level="project" />
+    <orderEntry type="library" name="2.1.4.RELEASE1" level="project" />
+    <orderEntry type="library" name="3.3.0" level="project" />
+    <orderEntry type="library" name="lib24" level="project" />
+    <orderEntry type="library" name="2.1.2.RELEASE4" level="project" />
+    <orderEntry type="library" name="slf4j-api-1.5.6" level="project" />
+    <orderEntry type="library" name="aws-java-sdk-lambda-1.11.133" level="project" />
+    <orderEntry type="library" name="lib52" level="project" />
+    <orderEntry type="module" module-name="main" />
+    <orderEntry type="module" module-name="main1" />
+  </component>
+</module>

@@ -1,0 +1,35 @@
+spring:
+  profile: dev
+  datasource:
+    url:
+    password:
+    username:
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 10MB
+      max-request-size: 12MB
+  amazonProperties:
+    endpoint: https://s3.us-east-1.amazonaws.com
+    bucketName:
+
+server:
+  port: 8080
+
+logging:
+  file: noteapp.log
+  path: /opt/tomcat/logs/
+
+file:
+  upload-dir: ./uploads
